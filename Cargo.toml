@@ -1,0 +1,23 @@
+[package]
+name = "atomflag"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/splurf/atomflag"
+description = "Atomics for your bitflags!"
+keywords = ["atomics", "bitflags", "proc-macro", "derive", "struct"]
+categories = ["rust-patterns", "data-structures"]
+exclude = [".github/", ".gitignore", "LICENSE", "tests/"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+atomint = "0.1.0"
+bitflags = "2.9.1"
+quote = "1.0.40"
+syn = { version = "2.0.101", features = ["derive", "parsing", "proc-macro"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
