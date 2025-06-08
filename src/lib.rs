@@ -92,7 +92,8 @@ pub fn atomflag_derive(input: TokenStream) -> TokenStream {
 
     let mut derives = vec![];
 
-    let inner_atomic = quote! { <<#name as ::bitflags::Flags>::Bits as AtomicInt>::Atomic };
+    let inner_atomic =
+        quote! { <<#name as ::bitflags::Flags>::Bits as ::atomint::AtomicInt>::Atomic };
     let wrapped_atomic = match wrapper_type.as_deref() {
         Some("Arc") => {
             derives.push(quote! { Clone });
